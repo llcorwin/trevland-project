@@ -1,0 +1,964 @@
+@font-face {
+    font-family: 'Gelasio';
+        src: url('./fonts/Gelasio-Bold.woff2') format('woff2');
+        src: url('./fonts/Gelasio-Bold.woff') format('woff');
+    font-style: normal;
+    font-weight: 700;
+    
+}
+
+@font-face {
+    font-family: 'Gelasio';
+        src: url('./fonts/Gelasio-Medium.woff2') format('woff2');
+        src: url('./fonts/Gelasio-Medium.woff') format('woff');
+    font-style: normal;
+    font-weight: 500;
+   
+}
+
+@font-face {
+    font-family: 'Roboto';
+        src: url('./fonts/Roboto-Bold.woff2') format('woff2');
+        src: url('./fonts/Roboto-Bold.woff') format('woff');
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Roboto';
+        src: url('./fonts/Roboto-Medium.woff2') format('woff2');
+        src: url('./fonts/Roboto-Medium.woff') format('woff');
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Roboto';
+        src: url('./fonts/Roboto-Regular.woff2') format('woff2');
+        src: url('./fonts/Roboto-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    /* основний шрифт краще вибирати той який найчастіше зустрічається! */
+    /* по дефолту font style , font weight normal i 400 */
+    color: rgba(0, 0, 0, 0.6);
+    /* властивість яка задається для прозорості (a) */
+    min-width: 320px;
+    /* властивіть яка задається для того, щоб не можна було зменшити менше 320 пікселів і щоб не пливла сторінка при цьому */
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 0;
+}
+
+ul, ol {
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    transition: .3s;
+    /* якщо перше значення 0, то можна не писати його і писати .3 */
+}
+
+/* зазвичай все що йде зверху копіюється з проекту в проект, міняються тільки значення */
+
+.btn {
+    display: inline-block;
+    border: 1px solid #C9453B;
+    background-color: #C9453B;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 13px 34px 12px;
+    text-align: center;
+    /* ми зменшили падінги на 1, бо задали бордер на 1 піксель */
+}
+
+.btn--sm {
+    padding: 9px 31px;
+    /* знову - піксель бо бордер */
+    /* модифікатор додали для меншої кнопки, бере стилі кнопки, але довішує свої */
+
+}
+
+.btn--lg {
+    padding: 17px 45px 16px;
+    /* знову - піксель бо бордер */
+    /* модифікатор додали для більшої кнопки */
+}
+/* це модифікатори по методології бем, буде наслідувати стилі бтн, і навішувати свої стилі */
+
+.btn:hover{
+    background-color: transparent;
+    border-color: #fff;
+    transition: .3s;
+
+}
+
+.wrapper {
+    overflow: hidden;
+    /* тут ми задали спеіцально клас для того, щоб не зявився горизонтальний скрол і прописали оверфлоу */
+}
+.container {
+    max-width: 1170px;
+    /* на макеті додали 360+360+360 + відступи 30+30, також ми додаємо +30, бо є падінги по 15, щоб тест вміщався в контейнер */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.box-head {
+    text-align: center;
+    /* властивість яка розташовує елементи по центру */
+    margin-bottom: 50px;
+    /* бо на макеті 50 і тільки вниз */
+}
+
+.box-head__caption {
+    margin-bottom: 20px;
+    font-family: Gelasio, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-weight: 500;
+    font-size: 43px;
+    color: #000;
+}
+
+.box-head__desc {
+    max-width: 735px;
+    margin: 0 auto;
+    /* це для того щоб відцентрувати */
+}
+
+.hero {
+    background-image: url(./images/hero.jpg);
+    /* додали картинку */
+    
+    background-repeat: no-repeat;
+    /* властивість щоб картинка не повторялась */
+    background-size: cover;
+    /* властивість щоб картинка займала весь простір */
+    background-position: 50% 50%;
+    /* властивість яка при зменшенні розширення екрану буде зжимати зображення пропорційно */
+    /* можна написати background-position: center */
+    /* почитати за background size & position !!  */
+    /* ця структура застосовуюється для всіх фонових зображень */
+}
+
+.hero__wrap {
+    min-height: 100vh;
+    /* задали висоту нашого екрану. 100vh - повний екран, 50vh половина */
+    display: flex;
+    flex-direction: column;
+    /* ці два свойства, щоб спрацював flex-grow */
+}
+
+.hero__content {
+    flex-grow: 1;
+    /* це для того, щоб блок контенту займав весь подальшим об'єм зображення після header */
+    padding: 50px 0;
+    display: flex;
+    align-items: center;
+}
+
+.hero__caption {
+    font-family: Gelasio, Arial, Helvetica, sans-serif;
+    font-size: 65px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #fff;
+    max-width: 804px;
+    margin-bottom: 30px;
+}
+
+.hero__desc {
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, .6);
+    max-width: 458px;
+    
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 35px;
+}
+
+.header__logo {
+    line-height: 0;
+}
+
+.header__logo-img {
+    max-width: 124px;
+    max-height: 36px;
+}
+
+.header__list {
+    display: flex;
+}
+
+.header__item {
+    padding: 0 25px;
+}
+
+.header__link {
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.5;
+    position: relative;
+    /* задали щоб коли нанесемо поллоску псевдоелемента, ми могли її позиціонувати відносно ссилки */
+}
+
+.header__link::after {
+    content: '';
+    /* обовязково задаємо */
+    position: absolute;
+    height: 1px;
+    width: 0;
+    bottom: -2px;
+    left: 0;
+    background-color: #fff;
+    transition: 0.3s;
+}
+
+.header__link:hover::after {
+    /* при ховері насилку ми задаємо псевдоелементу */
+    width: 100%;
+}
+
+.header__btn-menu {
+    display: none;
+}
+
+.popular-location {
+    padding: 70px 0;
+    /* задаємо 70, хоча на макеті 140, тому що потім 70 задамо нижньому блоку */
+    overflow: hidden;
+}
+
+
+
+.popular-location__row {
+    letter-spacing: -0.36em;
+    margin: -15px;
+}
+
+.popular-location__col {
+    display: inline-block;
+    padding: 15px;
+    width: 33.33%;
+    letter-spacing: normal;
+    vertical-align: top;
+    /* щоб колонки не зїжджали */
+}
+
+.popular-location__img-wrap {
+    display: block;
+    line-height: 0;
+    /* пофксили стандартний відступ між строками */
+    padding-bottom: 92%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+/*  360px= 100%
+    331 px = x
+    x= 331*100/360 = 92%
+    */
+
+.popular-location__img {
+    width: 100%;
+    position: absolute;
+    /* це для того, щоб після падінга 92% картинка випала з потоку */
+    /* вернутись сюди і ще раз поняти до кінця позиціонування */
+    left: 0;
+    top: 0;
+    height: 100%;
+    object-fit: cover;
+    /* це властисвіть для того, якщо ми поставимо картинку з іншими розмірами то її обрізало, а не сплющило бо 100% */
+}
+
+.popular-location__img:hover {
+    transform: scale(1.1);
+    /* при наведенні курсору мишки зміниться розмір картинки - збільшиться на 110 на 110 */
+    transition: 0.5s;
+    /* час за який зміниться ховер */
+}
+
+
+.popular-location__body {
+    padding: 35px 27px 33px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+    /* забрали зверху бордер. можна написати 0 замість none */
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+}
+
+.popular-location__name {
+    margin-bottom: 10px;
+}
+
+.popular-location__link {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 150%;
+    color: #000;
+    font-family: Gelasio, Arial, Helvetica, sans-serif;
+    transition: .3s;
+}
+
+.popular-location__link:hover {
+    color: #C9453B;
+}
+
+.container-special__offers{
+    max-width: 1504px;
+    /* на макеті додали 360+360+360 + відступи 30+30, також ми додаємо +30, бо є падінги по 15, щоб тест вміщався в контейнер */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.special-offers__wrap {
+    width: auto;
+}
+
+.special-offers__img-wrap {
+    display: block;
+    border-radius: 10px 10px;
+    position: relative;
+    overflow: hidden;
+    line-height: 0;
+    padding-bottom: 20px;
+}
+
+.special-offers__img {
+    width: 262px;
+    height: 173px;
+    object-fit: cover;
+}
+
+.special-offers__img:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.special-offers__link:hover{
+    color: #C9453B;
+}
+
+.special-offers__name {
+    font-family: 'Gelasio';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #000000;
+    padding-bottom: 8px;
+
+}
+
+.special-offers__box {
+ display: flex;
+ align-items: center;
+ padding-bottom: 8px;
+}
+
+.special-offers__location {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.special-offers__rate {
+    display: flex;
+    align-items: center;
+}
+
+.special-offers__icon {
+    width: 10.86px;
+    height: 15.2px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.special-offers__icons {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.special-offers__span {
+    line-height: 150%;
+    font-size: 20px;
+    font-weight: 400;
+    
+    
+}
+
+.special-offers__dur {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    padding-bottom: 8px;
+}
+
+.special-offers__price {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+}
+
+.special-offers {
+    padding: 75px 0 70px;
+}
+
+.special-offers__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 45px;
+}
+
+.special-offers__prev {
+    width: 14px;
+    height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./images/special-offers/Group\ 145.svg);
+    cursor: pointer;
+}
+
+.special-offers__next {
+    width: 14px;
+    height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./images/special-offers/Group\ 146.svg);
+    cursor: pointer;
+
+}
+
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+    width: auto;
+    padding: 0 45px;
+    /* задали 45, бо 5 забрали на 20px, в макеті менше було */
+    display: flex;
+    align-items: center;
+}
+
+.swiper-pagination-bullet {
+    width: 75px;
+    height: 5px;
+    border-radius: 10px;
+    background-color: rgba(201, 69, 59, 1);
+    transition: 0.3s;
+
+}
+
+.swiper-pagination-bullet-active{
+    background-color: #C9453B;
+
+}
+
+.swiper-slide {
+    width: 262px;
+    height: auto;
+}
+
+
+.news {
+    padding: 15px 15px;
+}
+
+.news__head {
+    text-align: center;
+}
+
+.news__title {
+    margin-bottom: 20px;
+    font-family: Gelasio, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-weight: 500;
+    font-size: 43px;
+    color: #000;
+}
+
+.news__info {
+    max-width: 581px;
+    margin: 0 auto;
+    margin-bottom: 56px;
+}
+
+.news__row {
+    letter-spacing: -0.36em;
+    margin: -15px;
+}
+
+.news__col {
+    display: inline-block;
+    padding: 15px;
+    width: 50%;
+    letter-spacing: normal;
+    vertical-align: top;
+}
+
+.news__img-wrap {
+    display: block;
+    border-radius: 10px;
+    margin-bottom: 35px;
+    position: relative;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.news__img {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+}
+
+.news__img-box-wrap {
+    display: block;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.news__img:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.news__name {
+    margin-bottom: 10px;
+}
+
+.news__text {
+    max-width: 470px;
+}
+
+.news__link {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 160%;
+    color: #000;
+    font-family: Gelasio;
+
+}
+
+.news__social-link {
+    margin: 10px 0;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+    color: #000;
+    font-family: Roboto;
+
+}
+
+.news__row-col {
+    letter-spacing: -0.36em;
+    margin: -15px;
+}
+
+.news__row-box {
+    letter-spacing: -0.36em;
+    margin: -15px;
+    margin-bottom: 5px;
+
+}
+
+.news__box-picture-text {
+    display: inline-block;
+    padding: 15px;
+    width: 50%;
+    letter-spacing: normal;
+    vertical-align: middle;
+    text-align: left;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.news__box-name {
+    margin-bottom: 10px;  
+}
+
+.news__box-link {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+    color: #000;
+    font-family: Gelasio;
+}
+
+.news__link:hover {
+    color: #C9453B;
+}
+
+.news__social-linkbox {
+    margin: 10px 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    color: #000;
+    font-family: Roboto;
+}
+
+.news__box-text{
+    padding-bottom: 5px;
+    max-width: 243px;
+}
+
+.news__text {
+    padding-bottom: 15px;
+}
+
+.footer{
+    padding: 70px 0 58px;
+    background-color:rgba(38, 148, 153, 0.04);
+}
+
+.footer__wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__logo {
+    max-width: 124px;
+    max-height: 36px;
+    margin-bottom: 40px;
+}
+
+.footer__label {
+    color: #000;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+}
+
+.footer__email {
+    margin-bottom: 20px;
+}
+
+.footer__email-link {
+    letter-spacing: 0.06em
+}
+
+.footer__email-link:hover {
+    color: #C9453B;
+}
+
+.footer__social {
+    display: flex;
+}
+
+.footer__social-item {
+    margin-right: 27px;
+    line-height: 0;
+}
+
+.footer__social-item:last-child {
+    margin-right: 0;
+    /* або ж пишемо footer__social-item: not(:last-child) margin right 27px */
+}
+
+.footer__social-link {
+    display: block;
+}
+
+.footer__social-link:hover {
+    transform: scale(1.2);
+}
+
+.footer__social-link svg {
+    width: 20px;
+    height: 20px;
+    /* звернулись до svg щоб задати розміри */
+}
+
+
+.footer__nav {
+    max-width: 40%;
+    padding: 0 20px;
+}
+
+.footer__nav-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer__nav-item {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.footer__nav-link {
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+}
+
+.footer__nav-link:hover {
+    color: #C9453B;
+}
+
+.footer__tittle {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #000;
+    letter-spacing: 0.06em;
+    margin-bottom: 42px;
+}
+
+.footer__form {
+    display: flex;
+
+}
+
+.footer__input {
+    margin-right: 35px;
+    width: 195px;
+}
+
+input {
+    width: 195px;
+    height: 44px;
+    opacity: 0.1;
+    border: 1px solid #000000;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    display: block;
+    margin-right: 35px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    padding: 10px 131px 10px 20px;
+}
+
+input::placeholder {
+    color: #000000;
+    height: 24px;
+    width: 44px;
+
+}
+
+
+/* media query для того щоб задати що після 768 пікселів розширення колоки будуть на 100% чи будь який елемент зверху
+Прописується в самому кінці */
+@media (max-width: 1024px) {
+
+    .header {
+        position: relative;
+        /* для того щоб потім задати header nav absolute  */
+    }
+    .header__logo {
+        margin-right: 5px;
+    }
+
+    .header__btn-menu {
+        display: block;
+        width: 30px;
+        height: 20px;
+        
+        position: relative;
+        /* задали бо header буде absolute */
+        flex-shrink: 0;
+        /* не дає флексу зжиматись */
+    }
+
+    .header__line {
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        transition: 0.3s;
+        /* задали щоб плавно хрестик робився */
+
+    }
+
+    .header__line:nth-child(1) {
+        top: 0;
+    
+    }
+
+    .header__line:nth-child(2) {
+        top: 9px;
+    
+    }
+
+    .header__line:nth-child(3) {
+        top: 18px;
+    
+    }
+
+    .header__btn-menu--open .header__line:nth-child(1) {
+        transform: rotate(45deg);
+        top: 9px;
+    }
+
+    .header__btn-menu--open .header__line:nth-child(2) {
+        display: none;
+    }
+    /*  сховали бо хрестик з 2 частин */
+
+    .header__btn-menu--open .header__line:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 9px;
+    }
+
+    .header__nav {
+        display: none;
+        /* задали щоб навігація пропадала при таблеті */
+    }
+
+    .header__btn-booking {
+        margin-left: auto;
+         /* це варіант як змістити елемент при флексах- питають на співбесіді, через те що flex на margin зроблений */
+        margin-right: 15px;
+    }
+
+    .hero__caption {
+        font-size: 50px;
+        max-width: 620px;
+    }
+
+    .header__nav--open {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: calc(100% + 5px);
+        /* це для того щоб займало 100% + 5 зч відступу від кнопки */
+        background-color: #000;
+        border-radius: 5px;
+    }
+
+    .header__list {
+        display: block;
+        min-width: 140px;
+    }
+
+    .header__item {
+        padding: 0;
+    }
+
+    .header__link {
+        display: block;
+        padding: 4px 15px;
+    }
+
+    .footer__wrap {
+        flex-wrap: wrap;
+    }
+
+    .footer__subscribe {
+        width: 100%;
+    }
+
+    .footer__nav {
+        max-width: 60%;
+    }
+    
+}
+
+
+@media (max-width: 768px) {
+    .box-head__caption {
+        font-size: 32px;
+    } 
+
+    .header {
+        padding-top: 20px;
+    }
+
+    .popular-location__col {
+        width: 100%;
+    }
+
+    .news__title {
+        font-size: 32px;
+    }
+
+    .news__col {
+       width: 100%;
+    }
+
+    .news__box-picture-text {
+        width: 100%;
+    }
+
+    .hero__caption {
+        font-size: 36px;
+        max-width: 445px;
+    }
+
+    .footer__nav {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .footer__contacts {
+        margin-bottom: 30px;
+    }
+
+    .footer__tittle {
+        margin-bottom: 20px;
+    }
+
+
+}
+@media (max-width: 425px) {
+    .swiper-pagination-bullet  {
+        width: 30px;
+    }
+}
+
+@media (max-width: 375px) {
+    .header__btn-booking {
+        padding-left: 9px;
+        padding-right: 9px;
+        margin-right: 5px;
+    }
+    
+    .header__btn-menu {
+        width: 25px;
+    }
+
+    .footer__nav {
+        margin-bottom: 20px;
+    }
+
+    .footer__nav-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
